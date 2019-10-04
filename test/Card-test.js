@@ -4,29 +4,32 @@ const expect = chai.expect;
 const Card = require('../src/Card');
 
 describe('Card', function() {
+  let card;
+  beforeEach( () => {
+    card = new Card({
+      'id': 5,
+      'question': 'What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?',
+      'answers': ['mutator method', 'accessor method', 'iteration method'],
+      'correctAnswer': 'iteration method'
+    });
+  });
 
-  it.skip('should be a function', function() {
-    const card = new Card();
+  it('should be a function', function() {
     expect(Card).to.be.a('function');
   });
 
-  it.skip('should be an instance of Card', function() {
-    const card = new Card();
-    expect(card).to.be.an.instanceof(Card);
+  it('should have a question', function() {
+    
+    expect(card.question).to.equal('What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?');
   }); 
 
-  it.skip('should store a question', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    expect(card.question).to.equal('What allows you to define a set of related information using key-value pairs?');
-  });  
+  it('should have an array of possible answers', function() {
+  
+    expect(card.answers).to.eql(['mutator method', 'accessor method', 'iteration method']);
+  }); 
 
-  it.skip('should store a list of possible answers', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    expect(card.answers).to.deep.equal(['object', 'array', 'function']);
-  });  
-
-  it.skip('should store the correct answer', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    expect(card.correctAnswer).to.equal('object');
+  it('should have the correct answer', function() {
+    
+    expect(card.correctAnswer).to.equal('iteration method');
   });
 });
